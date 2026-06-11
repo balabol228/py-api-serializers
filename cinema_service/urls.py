@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/cinema/", include("cinema.urls")),  # Має бути саме 'api/'
+    path("api/cinema/", include("cinema.urls")),
 ]
