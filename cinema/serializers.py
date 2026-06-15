@@ -22,7 +22,6 @@ class CinemaHallSerializer(serializers.ModelSerializer):
         fields = ("id", "name", "rows", "seats_in_row", "capacity")
 
 
-# Базовий серіалізатор для списку (виводить рядки)
 class MovieSerializer(serializers.ModelSerializer):
     genres = serializers.SlugRelatedField(many=True, read_only=True, slug_field="name")
     actors = serializers.SlugRelatedField(
@@ -34,13 +33,11 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = ("id", "title", "description", "duration", "genres", "actors")
 
 
-# Детальний серіалізатор (виводить об'єкти)
 class MovieDetailSerializer(MovieSerializer):
     genres = GenreSerializer(many=True, read_only=True)
     actors = ActorSerializer(many=True, read_only=True)
 
 
-# Серіалізатор для СТВОРЕННЯ (приймає ID)
 class MovieCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
